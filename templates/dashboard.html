@@ -128,17 +128,13 @@ input:focus {
                     {% csrf_token %}
                 <div class="row px-3"> <input type="text" name="location" placeholder="Another location" class="mb-5">
                    <button type="submit" class="fa fa-search mb-5 mr-0 text-center"></button>
-                </form>
-                </div>
-                
                 {% if messages %}
-                <ul class="messages">
                 {% for message in messages %}
-                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                <p style="color:blue;"  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> * {{ message }} </p>
                  {% endfor %}
-                </ul>
                 {% endif %}
-
+                </form>
+            </div>
                 <div class="mr-5">
                     <div class="row px-3">
                         <p class="light-text">Latitude</p>

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from pprint import pprint
 import requests
 from django.contrib import messages
 
@@ -24,9 +23,8 @@ def index(request):
         city=request.POST['location']
         base_url=f"http://api.weatherapi.com/v1/current.json?key=0fe078910dba45019cd62234220404&q={city}&aqi=yes"
         weather_data=requests.get(base_url).json()
-        if requests.get(base_url).status_code()==400:
-            messages.success(request, 'Enter Another Area Name')
-            city="ahmedabad"
+        if requests.get(base_url).status_code==400:
+            messages.success(request, 'Enter Another Area Name')   
             return render(request, 'dashboard.html',context)
         else:
             context={
